@@ -1,0 +1,162 @@
+﻿@{
+    ViewData["Title"] = "Thêm Phiếu nhập";
+}
+
+<div class="container mt-4">
+    <div class="card">
+        <div class="card-body">
+            <div class="row m-0 mb-4 align-items-end">
+                <div class="col-6 mb-1">
+                    <label class="mb-1" for="txtSoPhieu">Số phiếu:</label>
+                    <input id="txtSoPhieu" class="form-control" placeholder="Nhập vào số phiếu">
+                </div>
+                <div class="col-6 mb-1">
+                    <label class="mb-1" for="txtNguoiLap">Người nhập:</label>
+                    <input id="txtNguoiLap" class="form-control" value="Lâm Văn Hưng" placeholder="Tên nhân viên lập">
+                </div>
+                <div class="col-12 mb-1">
+                    <label class="mb-1" for="txtNhaCungCap">Nhà cung cấp</label>
+                    <input id="txtNhaCungCap" class="form-control" value="Nhà cung cấp ABC" placeholder="Tên nhà cung cấp">
+                </div>
+            </div>
+
+            <table id="tblPhieuNhap" class="table table-selectable table-vcenter text-nowrap table-input table-bordered">
+                <thead>
+                    <tr>
+                        <th class="text-center">Chọn</th>
+                        <th class="text-center">ID Hàng hóa</th>
+                        <th class="text-center">Hàng hóa</th>
+                        <th class="text-center">Số lượng</th>
+                        <th class="text-center">Đơn giá</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="text-center">
+                            <input type="checkbox" class="form-check-input">
+                        </td>
+                        <td>
+                            <input class="form-control form-table txtIdHH" style="min-width:50px" type="text" readonly>
+                        </td>
+                        <td>
+                            <select name="HangHoaId" class="form-select form-table ddlHangHoa">
+                                <option value="">-- Chọn hàng hóa --</option>
+                                @foreach (var item in ViewBag.HangHoaCbDTOs)
+                                {
+                                    <option value="@item.IDHH">@item.TenHangHoa</option>
+                                }
+                            </select>
+                        </td>
+                        <td>
+                            <textarea class="form-control form-table txtSoLuong" rows="1" autocomplete="off"></textarea>
+                        </td>
+                        <td>
+                            <input class="form-control form-table txtDonGia" style="min-width:100px" type="text" autocomplete="off">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="mt-3 text-end">
+                <button id="btnSave" class="btn btn-primary">Lưu</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $(document).on("change", ".ddlHangHoa", function () {
+                var $row = $(this).closest("tr");
+                var idHH = $(this).val();
+                $row.find(".txtIdHH").val(idHH);
+                var isLastRow = $row.is(":last-child");
+                if (idHH && isLastRow) {
+                    addNewRow();
+                }
+            });
+            function addNewRow() {
+                var newRow = `
+                    <tr>
+                        <td class="text-center">
+                            <input type="checkbox" class="form-check-input">
+                        </td>
+                        <td>
+                            <input class="form-control form-table txtIdHH" style="min-width:50px" type="text" readonly>
+                        </td>
+                        <td>
+                            <select name="HangHoaId" class="form-select form-table ddlHangHoa">
+                                <option value="">-- Chọn hàng hóa --</option>
+                                @foreach (var item in ViewBag.HangHoaCbDTOs)
+                                {
+                                    <option value="@item.IDHH">@item.TenHangHoa</option>
+                                }
+                            </select>
+                        </td>
+                        <td>
+                            <textarea class="form-control form-table txtSoLuong" rows="1" autocomplete="off"></textarea>
+                        </td>
+                        <td>
+                            <input class="form-control form-table txtDonGia" style="min-width:100px" type="text" autocomplete="off">
+                        </td>
+                    </tr>
+                `;
+                $("#tblPhieuNhap tbody").append(newRow);
+            }
+
+            $("#btnSave").click(function (e) {
+                e.preventDefault();
+                var soPhieu = $("#txtSoPhieu").val();
+                var nguoiLap = $("#txtNguoiLap").val();
+                var nhaCungCap = $("#txtNhaCungCap").val();
+
+                var chiTiet = [];
+
+                $("#tblPhieuNhap tbody tr").each(function () {
+                    var $row = $(this);
+
+                    // chỉ lấy nếu checkbox được tick
+                    if ($row.find("input[type=checkbox]").is(":checked")) {
+                        var idHH = $row.find(".txtIdHH").val();
+                        var tenHH = $row.find(".ddlHangHoa option:selected").text();
+                        var soLuong = $row.find(".txtSoLuong").val();
+                        var donGia = $row.find(".txtDonGia").val();
+
+                        if (idHH) {
+                            chiTiet.push({
+                                IDHH: parseInt(idHH) || 0,
+                                TenHangHoa: tenHH,
+                                SoLuong: parseInt(soLuong) || 0,
+                                DonGia: parseFloat(donGia) || 0
+                            });
+                        }
+                    }
+                });
+
+                var phieuNhap = {
+                    SoPhieu: soPhieu,
+                    NguoiLap: nguoiLap,
+                    NhaCungCap: nhaCungCap,
+                    ChiTiet: chiTiet
+                };
+
+                console.log("Phiếu nhập đầy đủ:", phieuNhap);
+                $.ajax({
+                    url: '@Url.Action("Create", "C0305PhieuNhap")',
+                    type: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify(phieuNhap),
+                    success: function (response) {
+                        alert("Lưu phiếu nhập thành công!");
+                        console.log("Phản hồi từ server:", response);
+                        window.location.href = '@Url.Action("Index", "C0305PhieuNhap")';
+                    },
+                    error: function (xhr, status, error) {
+                        alert("Lỗi khi lưu phiếu nhập: " + error);
+                    }
+                });
+            });
+        });
+    </script>
+}
+
