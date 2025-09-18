@@ -1,0 +1,49 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "E:\\Sixossoft\\TableToSTO\\TableToSTO\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{3995B6ED-E5D6-4E82-B26D-251480944CC3}|TableToSTO\\TableToSTO.csproj|e:\\sixossoft\\tabletosto\\tabletosto\\tabletosto\\services\\s0305\\s0305phieunhapservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3995B6ED-E5D6-4E82-B26D-251480944CC3}|TableToSTO\\TableToSTO.csproj|solutionrelative:tabletosto\\services\\s0305\\s0305phieunhapservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:716471800:0:{83107a3e-496a-485e-b455-16ddb978e55e}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "S0305PhieuNhapService.cs",
+              "DocumentMoniker": "E:\\Sixossoft\\TableToSTO\\TableToSTO\\TableToSTO\\Services\\S0305\\S0305PhieuNhapService.cs",
+              "RelativeDocumentMoniker": "TableToSTO\\Services\\S0305\\S0305PhieuNhapService.cs",
+              "ToolTip": "E:\\Sixossoft\\TableToSTO\\TableToSTO\\TableToSTO\\Services\\S0305\\S0305PhieuNhapService.cs",
+              "RelativeToolTip": "TableToSTO\\Services\\S0305\\S0305PhieuNhapService.cs",
+              "ViewState": "AgIAADEAAAAAAAAAAAAQwEYAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-18T07:00:58.1Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -66,7 +66,7 @@ namespace TableToSTO.Services.S0305
                         cmd.Parameters.AddWithValue("@NguoiLap", dto.NguoiLap ?? "");
                         cmd.Parameters.AddWithValue("@NhaCungCap", dto.NhaCungCap ?? "");
 
-                        cmd.Parameters.AddWithValue("@TypeDefinition", @$"");
+                        cmd.Parameters.AddWithValue("@TypeDefinition", DBNull.Value);
 
                         // Tạo JSON từ chi tiết
                         string chiTietJson = System.Text.Json.JsonSerializer.Serialize(dto.ChiTiet);

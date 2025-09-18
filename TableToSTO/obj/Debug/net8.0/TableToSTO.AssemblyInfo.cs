@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TableToSTO")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c8576fc529d3566a4dd2d211b493c76718be7fb9")]
 [assembly: System.Reflection.AssemblyProductAttribute("TableToSTO")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TableToSTO")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

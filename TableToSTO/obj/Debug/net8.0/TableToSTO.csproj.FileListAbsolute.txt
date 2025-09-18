@@ -144,3 +144,4 @@ E:\Sixossoft\TableToSTO\TableToSTO\TableToSTO\obj\Debug\net8.0\TableToSTO.pdb
 E:\Sixossoft\TableToSTO\TableToSTO\TableToSTO\obj\Debug\net8.0\TableToSTO.genruntimeconfig.cache
 E:\Sixossoft\TableToSTO\TableToSTO\TableToSTO\obj\Debug\net8.0\ref\TableToSTO.dll
 E:\Sixossoft\TableToSTO\TableToSTO\TableToSTO\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
+E:\Sixossoft\TableToSTO\TableToSTO\TableToSTO\obj\Debug\net8.0\TableToSTO.sourcelink.json
